@@ -20,7 +20,9 @@ internal struct AgeCalculator {
         let today = today
         let dateComponents = gregorianCalendar.dateComponents([.year], from: swiftDate, to: today)
         
-        guard let years = dateComponents.year else { throw Error.invalidBirthdayInputString(date: birthday) }
+        guard let years = dateComponents.year else {
+            throw Error.dateComponentsFailedToGetYear(dateComponents: dateComponents)
+        }
         
         self.age = years
     }
@@ -29,11 +31,14 @@ internal struct AgeCalculator {
 extension AgeCalculator {
     enum Error: LocalizedError {
         case invalidBirthdayInputString(date: String)
+        case dateComponentsFailedToGetYear(dateComponents: DateComponents)
         
         var description: String {
             switch self {
             case .invalidBirthdayInputString(let date):
                 return "Invalid birthdate: \(date). Format must be MM-DD-YYYY."
+            case .dateComponentsFailedToGetYear(let dateComponents):
+                return "DateComponents failed to get years. DateComponents = \(dateComponents)"
             }
         }
     }

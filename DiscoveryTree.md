@@ -7,7 +7,7 @@
     - ✅ Testing ages against Date() works today, but won’t work next year!
         - ✅ pass parameter that sets "today" date
     - ✅ test error invalidBirthdayInputString
-    - add error for failed `dateComponents.year`
+    - ✅ add error for failed `dateComponents.year`
     - edge cases
         - negative age
         - age 0
