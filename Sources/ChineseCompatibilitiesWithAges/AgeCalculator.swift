@@ -10,14 +10,14 @@ import Foundation
 internal struct AgeCalculator {
     var age: Int
     
-    init(birthday: String) throws {
+    init(birthday: String, today: Date = Date()) throws {
         let formatter = DateFormatter.inUTCTimeZone(dateFormat: "MM-dd-yyyy")
         guard let swiftDate = formatter.date(from: birthday) else {
             throw Error.invalidBirthdayInputString(date: birthday)
         }
         
         let gregorianCalendar = Calendar(identifier: .gregorian)
-        let today = Date()
+        let today = today
         let dateComponents = gregorianCalendar.dateComponents([.year], from: swiftDate, to: today)
         
         guard let years = dateComponents.year else { throw Error.invalidBirthdayInputString(date: birthday) }
