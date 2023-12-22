@@ -3,7 +3,7 @@
 ## 🔥 ChineseCompatibilitiesWithAges
 - ✅ Input birthday, output Animal
 - ✅ Input birthday, output age
-- 🔥 AgeCalculator
+- ✅ AgeCalculator
     - ✅ Testing ages against Date() works today, but won’t work next year!
         - ✅ pass parameter that sets "today" date
     - ✅ test error invalidBirthdayInputString
@@ -12,3 +12,4 @@
         - ✅ age 0
         - ✅ age 1
         - ✅ negative age
+- 🔥 Lists compatibilities 
