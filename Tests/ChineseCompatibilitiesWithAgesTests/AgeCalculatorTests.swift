@@ -44,6 +44,21 @@ final class AgeCalculatorTests: XCTestCase {
         XCTAssertTrue(true)
     }
     
+    func test_1dayOld_isAgeZero() throws {
+        let sut = try AgeCalculator(birthday: "01-02-2023", today: date("01-01-2023"))
+        XCTAssertEqual(sut.age, 0)
+    }
+    
+    func test_364daysOld_isAgeZero() throws {
+        let sut = try AgeCalculator(birthday: "01-01-2022", today: date("12-31-2022"))
+        XCTAssertEqual(sut.age, 0)
+    }
+    
+    func test_dates1YearApart_isAgeOne() throws {
+        let sut = try AgeCalculator(birthday: "01-01-2022", today: date("01-01-2023"))
+        XCTAssertEqual(sut.age, 1)
+    }
+    
     // MARK: - Helpers
     
     func date(_ string: String) -> Date {
