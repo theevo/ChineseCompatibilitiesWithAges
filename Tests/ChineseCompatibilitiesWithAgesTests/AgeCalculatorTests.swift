@@ -59,6 +59,11 @@ final class AgeCalculatorTests: XCTestCase {
         XCTAssertEqual(sut.age, 1)
     }
     
+    func test_futureBirthdate_isNegative() throws {
+        let sut = try AgeCalculator(birthday: "01-01-2023", today: date("01-01-2000"))
+        XCTAssertEqual(sut.age, -23)
+    }
+    
     // MARK: - Helpers
     
     func date(_ string: String) -> Date {
