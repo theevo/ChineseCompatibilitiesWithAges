@@ -6,5 +6,8 @@
 - 🔥 AgeCalculator
     - ✅ Testing ages against Date() works today, but won’t work next year!
         - ✅ pass parameter that sets "today" date
-        - 🔥 add error for failed `dateComponents.year`
-    - what does negative age mean?
+    - ✅ test error invalidBirthdayInputString
+    - add error for failed `dateComponents.year`
+    - edge cases
+        - negative age
+        - age 0

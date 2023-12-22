@@ -39,4 +39,24 @@ final class AgeCalculatorTests: XCTestCase {
         let sut = try AgeCalculator(birthday: "11-26-1978", today: jan012023)
         XCTAssertEqual(sut.age, 44)
     }
+    
+    func test_invalidBirthday_throwsError() throws {
+        var thrownError: Error?
+        
+        XCTAssertThrowsError(try AgeCalculator(birthday: "1999-01-01")) {
+            thrownError = $0
+        }
+        
+        guard let localError = thrownError as? AgeCalculator.Error else {
+            XCTFail("Expected \"AgeCalculator.Error\". Received instead type: \(type(of: thrownError))")
+            return
+        }
+        
+        guard case .invalidBirthdayInputString(_) = localError else {
+            XCTFail("Expected \"failedToParseDate\" error, but was \(localError) instead.")
+            return
+        }
+
+        XCTAssertTrue(true)
+    }
 }
