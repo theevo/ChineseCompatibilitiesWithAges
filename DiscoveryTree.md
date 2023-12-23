@@ -13,7 +13,7 @@
         - ✅ age 1
         - ✅ negative age
 - ✅ Lists compatibilities 
-- 🔥 Localize animal names
+- ✅ Localize animal names
     - ✅ map to SexagenaryCycle1924
-    - 🔥 map to ChineseZodiacCompatibility
-- nearest neighbors in terms of years
+    - ✅ map to ChineseZodiacCompatibility
+- 🔥 nearest neighbors in terms of years

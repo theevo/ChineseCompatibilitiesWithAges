@@ -7,14 +7,14 @@ import ChineseZodiacCompatibility
 public struct ChineseCompatibilitiesWithAges {
     public var animal: Animal
     public var age: Int
-    public var compatibilities: [Compatibilities.Animal]
+    public var compatibilities: [Animal]
     
     public init(birthday: String) throws {
         let query = try ZodiacQuery(birthday: birthday)
-        self.animal = Animal(name: query.animal.name)
+        let animal = Animal(name: query.animal.name)
+        self.animal = animal
         self.age = try AgeCalculator(birthday: birthday).age
-        let animal = Compatibilities.Animal(name: query.animal.name)
-        self.compatibilities = Compatibilities.of(animal: animal)
+        self.compatibilities = Compatibilities.of(agesAnimal: animal)
     }
 }
 
@@ -61,12 +61,41 @@ extension ChineseCompatibilitiesWithAges {
                 self = .Pig
             }
         }
+        
+        init(compatibilitiesAnimal: Compatibilities.Animal) {
+            switch compatibilitiesAnimal {
+            case .Rat:
+                self = .Rat
+            case .Ox:
+                self = .Ox
+            case .Tiger:
+                self = .Tiger
+            case .Rabbit:
+                self = .Rabbit
+            case .Dragon:
+                self = .Dragon
+            case .Snake:
+                self = .Snake
+            case .Horse:
+                self = .Horse
+            case .Goat:
+                self = .Goat
+            case .Monkey:
+                self = .Monkey
+            case .Rooster:
+                self = .Rooster
+            case .Dog:
+                self = .Dog
+            case .Pig:
+                self = .Pig
+            }
+        }
     }
 }
 
 extension Compatibilities.Animal {
-    init(name: SexagenaryAnimal.Name) {
-        switch name {
+    init(animal: ChineseCompatibilitiesWithAges.Animal) {
+        switch animal {
         case .Rat:
             self = .Rat
         case .Ox:
@@ -92,5 +121,19 @@ extension Compatibilities.Animal {
         case .Pig:
             self = .Pig
         }
+    }
+}
+
+extension Compatibilities {
+    static func of(agesAnimal: ChineseCompatibilitiesWithAges.Animal) -> [ChineseCompatibilitiesWithAges.Animal] {
+        let animal = Compatibilities.Animal(animal: agesAnimal)
+        
+        let compatibilities = Compatibilities.of(animal: animal)
+        
+        let agesAnimals = compatibilities.map { compatAnimal in
+            ChineseCompatibilitiesWithAges.Animal(compatibilitiesAnimal: compatAnimal)
+        }
+        
+        return agesAnimals
     }
 }
