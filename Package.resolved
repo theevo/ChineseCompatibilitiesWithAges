@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "chinesezodiaccompatibility",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/theevo/ChineseZodiacCompatibility.git",
+      "state" : {
+        "revision" : "4c2c99ed437a42060c720b12adef59cadf47a81c",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "sexagenarycycle1924",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/theevo/SexagenaryCycle1924.git",

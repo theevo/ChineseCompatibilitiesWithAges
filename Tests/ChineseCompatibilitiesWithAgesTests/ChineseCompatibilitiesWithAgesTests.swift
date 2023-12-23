@@ -11,4 +11,12 @@ final class ChineseCompatibilitiesWithAgesTests: XCTestCase {
         let sut = try ChineseCompatibilitiesWithAges(birthday: "10-31-1947")
         XCTAssertEqual(sut.animal, .Pig)
     }
+    
+    func test_birthday_08_01_1976_isDragon_compatibleWith_Rat_Monkey_Rooster() throws {
+        let sut = try ChineseCompatibilitiesWithAges(birthday: "08-01-1976")
+        XCTAssertEqual(sut.animal, .Dragon)
+        XCTAssertTrue(sut.compatibilities.contains(.Rat))
+        XCTAssertTrue(sut.compatibilities.contains(.Monkey))
+        XCTAssertTrue(sut.compatibilities.contains(.Rooster))
+    }
 }
