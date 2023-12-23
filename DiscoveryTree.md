@@ -18,3 +18,5 @@
     - ✅ map to ChineseZodiacCompatibility
         - ✅ move extensions to their own file
 - 🔥 nearest neighbors in terms of years
+    - ✅ use dicitonary?
+    - 🔥 calculate animal distances

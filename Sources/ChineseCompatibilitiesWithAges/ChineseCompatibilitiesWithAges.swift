@@ -8,6 +8,7 @@ public struct ChineseCompatibilitiesWithAges {
     public var animal: Animal
     public var age: Int
     public var compatibilities: [Animal]
+    public var nearestNeighbors: [Animal: Set<Int>]
     
     public init(birthday: String) throws {
         let query = try ZodiacQuery(birthday: birthday)
@@ -15,6 +16,9 @@ public struct ChineseCompatibilitiesWithAges {
         self.animal = animal
         self.age = try AgeCalculator(birthday: birthday).age
         self.compatibilities = Compatibilities.of(agesAnimal: animal)
+        var dict: [Animal: Set<Int>] = [:]
+        dict[.Rooster] = [-5, 7]
+        self.nearestNeighbors = dict
     }
 }
 
