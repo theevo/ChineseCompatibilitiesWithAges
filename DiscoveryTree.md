@@ -12,4 +12,8 @@
         - ✅ age 0
         - ✅ age 1
         - ✅ negative age
-- 🔥 Lists compatibilities 
+- ✅ Lists compatibilities 
+- 🔥 Localize animal names
+    - ✅ map to SexagenaryCycle1924
+    - 🔥 map to ChineseZodiacCompatibility
+- nearest neighbors in terms of years
