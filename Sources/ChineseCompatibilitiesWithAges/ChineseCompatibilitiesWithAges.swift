@@ -26,8 +26,8 @@ public struct ChineseCompatibilitiesWithAges {
 }
 
 extension ChineseCompatibilitiesWithAges {
-    public enum Animal {
-        case Rat
+    public enum Animal: Int {
+        case Rat = 1
         case Ox
         case Tiger
         case Rabbit
@@ -97,5 +97,13 @@ extension ChineseCompatibilitiesWithAges {
                 self = .Pig
             }
         }
+    }
+}
+
+extension ChineseCompatibilitiesWithAges.Animal {
+    public static func ...(lhs: ChineseCompatibilitiesWithAges.Animal, rhs: ChineseCompatibilitiesWithAges.Animal) -> [Int] {
+        let diff1 = lhs.rawValue - rhs.rawValue
+        let diff2 = -(12 - diff1)
+        return [diff1, diff2]
     }
 }
