@@ -18,9 +18,8 @@ public struct ChineseCompatibilitiesWithAges {
         self.compatibilities = Compatibilities.of(agesAnimal: animal)
         var dict: [Animal: Set<Int>] = [:]
         for compatibility in compatibilities {
-            dict[compatibility] = [1]
+            dict[compatibility] = animal...compatibility
         }
-        dict[.Rooster] = [-5, 7]
         self.nearestNeighbors = dict
     }
 }
@@ -101,7 +100,7 @@ extension ChineseCompatibilitiesWithAges {
 }
 
 extension ChineseCompatibilitiesWithAges.Animal {
-    public static func ...(lhs: ChineseCompatibilitiesWithAges.Animal, rhs: ChineseCompatibilitiesWithAges.Animal) -> [Int] {
+    public static func ...(lhs: ChineseCompatibilitiesWithAges.Animal, rhs: ChineseCompatibilitiesWithAges.Animal) -> Set<Int> {
         guard lhs != rhs else {
             return [-12, 0, 12]
         }
