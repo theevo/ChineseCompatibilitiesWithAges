@@ -102,6 +102,10 @@ extension ChineseCompatibilitiesWithAges {
 
 extension ChineseCompatibilitiesWithAges.Animal {
     public static func ...(lhs: ChineseCompatibilitiesWithAges.Animal, rhs: ChineseCompatibilitiesWithAges.Animal) -> [Int] {
+        guard lhs != rhs else {
+            return [-12, 0, 12]
+        }
+        
         let diff1 = lhs.rawValue - rhs.rawValue
         var diff2 = 12 - abs(diff1)
         diff2 = diff1 > 0 ? -diff2 : diff2
