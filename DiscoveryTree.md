@@ -20,11 +20,13 @@
 - 🔥 nearest neighbors in terms of years
     - ✅ use dicitonary?
     - ✅ save all compatibilities to dictionary as keys
-    - 🔥 calculate animal distances[^1]
+    - ✅ calculate animal distances[^1]
         - ✅ Δ(Dragon, Rat) = [4, -8] 
         - ✅ Δ(Rat, Dragon) = [-4, 8]
         - ✅ Δ(Rat, Rat) = [-12, 0, 12]
-        - 🔥 Δ(Pig, Rat) = [11, -1]
+        - ✅ Δ(Pig, Rat) = [11, -1]
+        - ✅ Δ(Rat, Pig) = [1, -11]
+    - 🔥 save distances to nearest neighbors dictionary
 
 
 [^1]: Should years *older* be denoted as positive or negative? Why positive: calculating the distance is simple subtraction of the years of birth. `Goat 1991 - Tiger 1986 = 5; Goat 1991 - Tiger 1998 = -7`. Why negative: simply add the distance value to the base year. `Goat 1991 + -5 = Tiger 1986; Goat 1991 + 7 = Tiger 1998`. Why positive: IMO someone who is 2 years older than me is seen coloquially to be a positive number. I simply add 2 to my age to get their age. Conversely, for someone 2 years younger than me, I would subtract 2 years from my age (in essence, this would be a negative number). 

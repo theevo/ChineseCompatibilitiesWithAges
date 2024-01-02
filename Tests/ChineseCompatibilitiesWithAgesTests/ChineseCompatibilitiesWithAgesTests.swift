@@ -62,4 +62,22 @@ final class ChineseCompatibilitiesWithAgesTests: XCTestCase {
         XCTAssertTrue(distances.contains(0))
         XCTAssertTrue(distances.contains(12))
     }
+    
+    func test_distanceBetween_Pig_and_Rat_are_11yearsOlder_or_1yearYounger() {
+        let pig = ChineseCompatibilitiesWithAges.Animal.Pig
+        let rat = ChineseCompatibilitiesWithAges.Animal.Rat
+        let distances = pig...rat
+        XCTAssertEqual(distances.count, 2)
+        XCTAssertTrue(distances.contains(11))
+        XCTAssertTrue(distances.contains(-1))
+    }
+    
+    func test_distanceBetween_Rat_and_Pig_are_1yearOlder_or_11yearsYounger() {
+        let pig = ChineseCompatibilitiesWithAges.Animal.Pig
+        let rat = ChineseCompatibilitiesWithAges.Animal.Rat
+        let distances = rat...pig
+        XCTAssertEqual(distances.count, 2)
+        XCTAssertTrue(distances.contains(1))
+        XCTAssertTrue(distances.contains(-11))
+    }
 }
