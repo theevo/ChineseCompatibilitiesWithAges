@@ -25,4 +25,14 @@ final class ChineseCompatibilitiesWithAgesTests: XCTestCase {
         XCTAssertEqual(sut.animal, .Dragon)
         XCTAssertEqual(sut.nearestNeighbors[.Rooster], [-5, 7])
     }
+    
+    func test_birthday_08_01_1976_nearestNeighborsContainRat_Monkey_rooster() throws {
+        let sut = try ChineseCompatibilitiesWithAges(birthday: "08-01-1976")
+        XCTAssertEqual(sut.animal, .Dragon)
+        let neighbors = sut.nearestNeighbors.keys
+        XCTAssertEqual(neighbors.count, 3)
+        XCTAssertTrue(neighbors.contains(.Rooster))
+        XCTAssertTrue(neighbors.contains(.Rat))
+        XCTAssertTrue(neighbors.contains(.Monkey))
+    }
 }
