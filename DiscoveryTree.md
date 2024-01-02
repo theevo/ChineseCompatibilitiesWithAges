@@ -19,4 +19,5 @@
         - ✅ move extensions to their own file
 - 🔥 nearest neighbors in terms of years
     - ✅ use dicitonary?
-    - 🔥 calculate animal distances
+    - 🔥 save all compatibilities to dictionary as keys
+    -  calculate animal distances
