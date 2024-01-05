@@ -128,4 +128,39 @@ final class ChineseCompatibilitiesWithAgesTests: XCTestCase {
         XCTAssertTrue(sut.contains(4))
         XCTAssertTrue(sut.contains(-8))
     }
+    
+    func test_birthday_02_24_1955_isGoat_nearestGoatsAre_12yearsOlder_sameYear_12yearsYounger() throws {
+        let goat = try ChineseCompatibilitiesWithAges(birthday: "02-24-1955")
+        XCTAssertEqual(goat.animal, .Goat)
+        XCTAssertEqual(goat.nearestNeighbors.count, 4)
+        let sut = try XCTUnwrap(goat.nearestNeighbors[.Goat])
+        XCTAssertEqual(sut.count, 3)
+        XCTAssertTrue(sut.contains(12))
+        XCTAssertTrue(sut.contains(0))
+        XCTAssertTrue(sut.contains(-12))
+    }
+    
+    func test_birthday_02_24_1955_isGoat_nearestRabbitsAre_4yearsOlder_8yearsYounger() throws {
+        let goat = try ChineseCompatibilitiesWithAges(birthday: "02-24-1955")
+        let sut = try XCTUnwrap(goat.nearestNeighbors[.Rabbit])
+        XCTAssertEqual(sut.count, 2)
+        XCTAssertTrue(sut.contains(4))
+        XCTAssertTrue(sut.contains(-8))
+    }
+    
+    func test_birthday_02_24_1955_isGoat_nearestHorsesAre_1yearsOlder_11yearsYounger() throws {
+        let goat = try ChineseCompatibilitiesWithAges(birthday: "02-24-1955")
+        let sut = try XCTUnwrap(goat.nearestNeighbors[.Horse])
+        XCTAssertEqual(sut.count, 2)
+        XCTAssertTrue(sut.contains(1))
+        XCTAssertTrue(sut.contains(-11))
+    }
+    
+    func test_birthday_02_24_1955_isGoat_nearestPigsAre_8yearsOlder_4yearsYounger() throws {
+        let goat = try ChineseCompatibilitiesWithAges(birthday: "02-24-1955")
+        let sut = try XCTUnwrap(goat.nearestNeighbors[.Pig])
+        XCTAssertEqual(sut.count, 2)
+        XCTAssertTrue(sut.contains(8))
+        XCTAssertTrue(sut.contains(-4))
+    }
 }
