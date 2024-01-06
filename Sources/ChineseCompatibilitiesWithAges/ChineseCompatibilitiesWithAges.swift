@@ -1,6 +1,7 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
+import Foundation
 import SexagenaryCycle1924
 import ChineseZodiacCompatibility
 
@@ -9,12 +10,21 @@ public struct ChineseCompatibilitiesWithAges {
     public var age: Int
     public var compatibilities: [Animal]
     public var nearestNeighbors: [Animal: Set<Int>]
+    public var nearestNeighborAges: [Animal: Set<Int>] {
+        nearestNeighbors.mapValues({ distances in
+            var ages: Set<Int> = []
+            for distance in distances {
+                ages.insert(age + distance)
+            }
+            return ages
+        })
+    }
     
-    public init(birthday: String) throws {
+    public init(birthday: String, today: Date = Date()) throws {
         let query = try ZodiacQuery(birthday: birthday)
         let animal = Animal(name: query.animal.name)
         self.animal = animal
-        self.age = try AgeCalculator(birthday: birthday).age
+        self.age = try AgeCalculator(birthday: birthday, today: today).age
         self.compatibilities = Compatibilities.of(agesAnimal: animal)
         var dict: [Animal: Set<Int>] = [:]
         for compatibility in compatibilities {

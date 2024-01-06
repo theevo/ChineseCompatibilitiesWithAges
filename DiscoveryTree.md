@@ -48,7 +48,8 @@
             - Dragon: -7, 5
             - Snake: 4, -8
 - 🔥 Show ages of every nearest neighbor
-         
+    - Can we not depend on Foundation in ChineseCompatibilitiesWithAges?
+    - What happens when age is fuzzy? Today is near Chinese new year?
 
 
 [^1]: Should years *older* be denoted as positive or negative? Why positive: calculating the distance is simple subtraction of the years of birth. `Goat 1991 - Tiger 1986 = 5; Goat 1991 - Tiger 1998 = -7`. Why negative: simply add the distance value to the base year. `Goat 1991 + -5 = Tiger 1986; Goat 1991 + 7 = Tiger 1998`. Why positive: IMO someone who is 2 years older than me is seen coloquially to be a positive number. I simply add 2 to my age to get their age. Conversely, for someone 2 years younger than me, I would subtract 2 years from my age (in essence, this would be a negative number). 

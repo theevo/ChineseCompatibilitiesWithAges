@@ -213,4 +213,23 @@ final class ChineseCompatibilitiesWithAgesTests: XCTestCase {
         XCTAssertTrue(sut.contains(5))
         XCTAssertTrue(sut.contains(-7))
     }
+    
+    func test_CarlosSantana_nearestRabbitAgesAre_72_and_84_on_01_06_2024() throws {
+        let pig = try ChineseCompatibilitiesWithAges(birthday: "07-20-1947", today: date("01-06-2024"))
+        XCTAssertEqual(pig.animal, .Pig)
+        let sut = try XCTUnwrap(pig.nearestNeighborAges[.Rabbit])
+        XCTAssertEqual(sut.count, 2)
+        XCTAssertTrue(sut.contains(72))
+        XCTAssertTrue(sut.contains(84))
+    }
+    
+    // MARK: - Helpers
+    
+    func date(_ string: String) -> Date {
+        let formatter = DateFormatter.inUTCTimeZone(dateFormat: "MM-dd-yyyy")
+        guard let swiftDate = formatter.date(from: string) else {
+            fatalError()
+        }
+        return swiftDate
+    }
 }
