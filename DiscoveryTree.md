@@ -17,7 +17,7 @@
     - ✅ map to SexagenaryCycle1924
     - ✅ map to ChineseZodiacCompatibility
         - ✅ move extensions to their own file
-- 🔥 nearest neighbors in terms of years
+- ✅ nearest neighbors in terms of years
     - ✅ use dicitonary?
     - ✅ save all compatibilities to dictionary as keys
     - ✅ calculate animal distances[^1]
@@ -26,7 +26,7 @@
         - ✅ Δ(Rat, Rat) = [-12, 0, 12]
         - ✅ Δ(Pig, Rat) = [11, -1]
         - ✅ Δ(Rat, Pig) = [1, -11]
-    - 🔥 save distances to nearest neighbors dictionary
+    - ✅ save distances to nearest neighbors dictionary
         - ✅ Dragon1976 has 2 Rat neighbors: 4 years older and 8 years younger
         - ✅ Dragon1976 has 2 Rooster neighbors: 7 years older and 5 years younger
         - ✅ Dragon1976 has 2 Monkey neighbors: 8 years older and 4 years younger
@@ -43,10 +43,11 @@
             - Tiger: -8, 4
             - Goat: -1, 11
             - Dog: -4, 8
-        - 🔥 Rooster1933 Yoko Ono's neighbors are
-            - Ox: -8, 4
-            - Dragon: -1, 11
+        - ✅ Rooster1933 Yoko Ono's neighbors are
+            - Ox: -4, 8 
+            - Dragon: -7, 5
             - Snake: 4, -8
+- 🔥 Show ages of every nearest neighbor
          
 
 

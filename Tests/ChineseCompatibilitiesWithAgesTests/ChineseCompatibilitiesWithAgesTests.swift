@@ -188,4 +188,29 @@ final class ChineseCompatibilitiesWithAgesTests: XCTestCase {
         XCTAssertTrue(sut.contains(-4))
         XCTAssertTrue(sut.contains(8))
     }
+    
+    func test_birthday_02_18_1933_isRooster_nearestOxenAre_4yearsYounger_8yearsOlder() throws {
+        let rooster = try ChineseCompatibilitiesWithAges(birthday: "02-18-1933")
+        XCTAssertEqual(rooster.animal, .Rooster)
+        let sut = try XCTUnwrap(rooster.nearestNeighbors[.Ox])
+        XCTAssertEqual(sut.count, 2)
+        XCTAssertTrue(sut.contains(-4))
+        XCTAssertTrue(sut.contains(8))
+    }
+    
+    func test_birthday_02_18_1933_isRooster_nearestSnakesAre_8yearsYounger_4yearsOlder() throws {
+        let rooster = try ChineseCompatibilitiesWithAges(birthday: "02-18-1933")
+        let sut = try XCTUnwrap(rooster.nearestNeighbors[.Snake])
+        XCTAssertEqual(sut.count, 2)
+        XCTAssertTrue(sut.contains(4))
+        XCTAssertTrue(sut.contains(-8))
+    }
+    
+    func test_birthday_02_18_1933_isRooster_nearestDragonsAre_7yearsYounger_5yearsOlder() throws {
+        let rooster = try ChineseCompatibilitiesWithAges(birthday: "02-18-1933")
+        let sut = try XCTUnwrap(rooster.nearestNeighbors[.Dragon])
+        XCTAssertEqual(sut.count, 2)
+        XCTAssertTrue(sut.contains(5))
+        XCTAssertTrue(sut.contains(-7))
+    }
 }
