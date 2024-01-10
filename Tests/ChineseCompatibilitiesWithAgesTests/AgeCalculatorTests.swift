@@ -56,19 +56,16 @@ final class AgeCalculatorTests: XCTestCase {
     
     func test_birthday_11_26_1978_on_11_26_2023_isAge45() throws {
         let sut = try AgeCalculator(birthday: "11-26-1978", today: date("11-26-2023"))
-        print(sut)
         XCTAssertEqual(sut.age, 45)
     }
     
     func test_birthday_11_26_1978_on_11_26_2024_isAge46() throws {
         let sut = try AgeCalculator(birthday: "11-26-1978", today: date("11-26-2024"))
-        print(sut)
         XCTAssertEqual(sut.age, 46)
     }
     
     func test_birthday_11_26_1978_on_11_25_2023_isAge44() throws {
         let sut = try AgeCalculator(birthday: "11-26-1978", today: date("11-25-2023"))
-        print(sut)
         XCTAssertEqual(sut.age, 44)
     }
     
@@ -79,7 +76,6 @@ final class AgeCalculatorTests: XCTestCase {
     
     func test_birthday_01_23_1974_on_01_23_2023_isAge49() throws {
         let sut = try AgeCalculator(birthday: "01-23-1974", today: date("01-23-2023"))
-        print(sut)
         XCTAssertEqual(sut.age, 49)
     }
     
