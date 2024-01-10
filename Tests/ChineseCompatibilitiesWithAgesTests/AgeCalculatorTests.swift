@@ -79,7 +79,7 @@ final class AgeCalculatorTests: XCTestCase {
         XCTAssertEqual(sut.age, 49)
     }
     
-    func test_birthday_01_23_1974_on_01_24_2023_isAge50() throws {
+    func test_birthday_01_23_1974_on_01_24_2024_isAge50() throws {
         let sut = try AgeCalculator(birthday: "01-23-1974", on: date("01-24-2024"))
         print(sut)
         XCTAssertEqual(sut.age, 50)
