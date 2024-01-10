@@ -64,6 +64,41 @@ final class AgeCalculatorTests: XCTestCase {
         XCTAssertEqual(sut.age, -23)
     }
     
+    func test_birthday_11_26_1978_on_11_26_2023_isAge45() throws {
+        let sut = try AgeCalculator(birthday: "11-26-1978", today: date("11-26-2023"))
+        print(sut)
+        XCTAssertEqual(sut.age, 45)
+    }
+    
+    func test_birthday_11_26_1978_on_11_26_2024_isAge46() throws {
+        let sut = try AgeCalculator(birthday: "11-26-1978", today: date("11-26-2024"))
+        print(sut)
+        XCTAssertEqual(sut.age, 46)
+    }
+    
+    func test_birthday_11_26_1978_on_11_25_2023_isAge44() throws {
+        let sut = try AgeCalculator(birthday: "11-26-1978", today: date("11-25-2023"))
+        print(sut)
+        XCTAssertEqual(sut.age, 44)
+    }
+    
+    func test_birthday_01_23_1974_on_01_22_2024_isAge49() throws {
+        let sut = try AgeCalculator(birthday: "01-23-1974", today: date("01-22-2024"))
+        XCTAssertEqual(sut.age, 49)
+    }
+    
+    func test_birthday_01_23_1974_on_01_23_2023_isAge49() throws {
+        let sut = try AgeCalculator(birthday: "01-23-1974", today: date("01-23-2023"))
+        print(sut)
+        XCTAssertEqual(sut.age, 49)
+    }
+    
+    func test_birthday_01_23_1974_on_01_24_2023_isAge50() throws {
+        let sut = try AgeCalculator(birthday: "01-23-1974", today: date("01-24-2024"))
+        print(sut)
+        XCTAssertEqual(sut.age, 50)
+    }
+    
     // MARK: - Helpers
     
     func date(_ string: String) -> Date {
@@ -72,5 +107,17 @@ final class AgeCalculatorTests: XCTestCase {
             fatalError()
         }
         return swiftDate
+    }
+}
+
+extension AgeCalculator: CustomStringConvertible {
+    public var description: String {
+"""
+📆     Birthday: \(birthDate)
+             On: \(referenceDate)
+            Age: \(age)
+ dateComponents: \(dateComponents)
+ dateComponent2: \(dateComponents2)
+"""
     }
 }

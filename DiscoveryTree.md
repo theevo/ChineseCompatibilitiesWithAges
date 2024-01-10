@@ -47,7 +47,9 @@
             - Ox: -4, 8 
             - Dragon: -7, 5
             - Snake: 4, -8
-- 🔥 Show ages of every nearest neighbor
+- ❌🪲 Bug: Someone with birthday 1/23/1974 on 1/23/2024 should be age 50. Similar test on my birthday works.
+    - Inject "today" as not `Date()` but with current date without the exact time. 
+- Show ages of every nearest neighbor
     - Can we not depend on Foundation in ChineseCompatibilitiesWithAges?
     - What happens when age is fuzzy? Today is near Chinese new year?
 

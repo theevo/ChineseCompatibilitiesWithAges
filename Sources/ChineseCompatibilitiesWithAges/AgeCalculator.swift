@@ -9,6 +9,10 @@ import Foundation
 
 internal struct AgeCalculator {
     var age: Int
+    var birthDate: Date
+    let referenceDate: Date
+    var dateComponents: DateComponents
+    var dateComponents2: DateComponents
     
     init(birthday: String, today: Date = Date()) throws {
         let formatter = DateFormatter.inUTCTimeZone(dateFormat: "MM-dd-yyyy")
@@ -16,13 +20,22 @@ internal struct AgeCalculator {
             throw Error.invalidBirthdayInputString(date: birthday)
         }
         
+        self.birthDate = swiftDate
+        self.referenceDate = today
+        
         let gregorianCalendar = Calendar(identifier: .gregorian)
         let today = today
-        let dateComponents = gregorianCalendar.dateComponents([.year], from: swiftDate, to: today)
+        let dateComponents = gregorianCalendar.dateComponents([.year, .month, .day], from: swiftDate, to: today)
+        
+        self.dateComponents = dateComponents
         
         guard let years = dateComponents.year else {
             throw Error.dateComponentsFailedToGetYear(dateComponents: dateComponents)
         }
+        
+        self.dateComponents2 = gregorianCalendar.dateComponents([.day], from: swiftDate, to: today)
+        
+        
         
         self.age = years
     }
