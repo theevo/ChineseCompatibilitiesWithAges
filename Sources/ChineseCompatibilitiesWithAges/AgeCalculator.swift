@@ -12,7 +12,6 @@ internal struct AgeCalculator {
     var birthDate: Date
     let referenceDate: Date
     var dateComponents: DateComponents
-    var dateComponents2: DateComponents
     
     init(birthday: String, today: Date = Date()) throws {
         let formatter = DateFormatter.inUTCTimeZone(dateFormat: "MM-dd-yyyy")
@@ -23,7 +22,7 @@ internal struct AgeCalculator {
         self.birthDate = swiftDate
         self.referenceDate = today
         
-        let gregorianCalendar = Calendar(identifier: .gregorian)
+        let gregorianCalendar = Calendar.gregorianUTC
         let today = today
         let dateComponents = gregorianCalendar.dateComponents([.year, .month, .day], from: swiftDate, to: today)
         
@@ -32,10 +31,6 @@ internal struct AgeCalculator {
         guard let years = dateComponents.year else {
             throw Error.dateComponentsFailedToGetYear(dateComponents: dateComponents)
         }
-        
-        self.dateComponents2 = gregorianCalendar.dateComponents([.day], from: swiftDate, to: today)
-        
-        
         
         self.age = years
     }
@@ -54,5 +49,13 @@ extension AgeCalculator {
                 return "DateComponents failed to get years. DateComponents = \(dateComponents)"
             }
         }
+    }
+}
+
+extension Calendar {
+    public static var gregorianUTC: Calendar {
+        var gregorianCalendar = Calendar(identifier: .gregorian)
+        gregorianCalendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        return gregorianCalendar
     }
 }

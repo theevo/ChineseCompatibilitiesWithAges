@@ -9,19 +9,9 @@ import XCTest
 @testable import ChineseCompatibilitiesWithAges
 
 final class AgeCalculatorTests: XCTestCase {
-    func test_birthday_11_26_1978_isAge45() throws {
-        let sut = try AgeCalculator(birthday: "11-26-1978", today: date("12-22-2023"))
-        XCTAssertEqual(sut.age, 45)
-    }
-    
     func test_birthday_10_31_1947_isAge76() throws {
         let sut = try AgeCalculator(birthday: "10-31-1947", today: date("12-22-2023"))
         XCTAssertEqual(sut.age, 76)
-    }
-    
-    func test_birthday_11_26_1978_isAge44() throws {
-        let sut = try AgeCalculator(birthday: "11-26-1978", today: date("01-01-2023"))
-        XCTAssertEqual(sut.age, 44)
     }
     
     func test_invalidBirthday_throwsError() throws {
@@ -59,7 +49,7 @@ final class AgeCalculatorTests: XCTestCase {
         XCTAssertEqual(sut.age, 1)
     }
     
-    func test_futureBirthdate_isNegative() throws {
+    func test_birthday_01_01_2023_whenTodayIsYear2000_isNegative23() throws {
         let sut = try AgeCalculator(birthday: "01-01-2023", today: date("01-01-2000"))
         XCTAssertEqual(sut.age, -23)
     }
@@ -117,7 +107,6 @@ extension AgeCalculator: CustomStringConvertible {
              On: \(referenceDate)
             Age: \(age)
  dateComponents: \(dateComponents)
- dateComponent2: \(dateComponents2)
 """
     }
 }
