@@ -13,18 +13,17 @@ internal struct AgeCalculator {
     let referenceDate: Date
     var dateComponents: DateComponents
     
-    init(birthday: String, today: Date = Date()) throws {
+    init(birthday: String, on: Date = Date()) throws {
         let formatter = DateFormatter.inUTCTimeZone(dateFormat: "MM-dd-yyyy")
         guard let swiftDate = formatter.date(from: birthday) else {
             throw Error.invalidBirthdayInputString(date: birthday)
         }
         
         self.birthDate = swiftDate
-        self.referenceDate = today
+        self.referenceDate = on
         
         let gregorianCalendar = Calendar.gregorianUTC
-        let today = today
-        let dateComponents = gregorianCalendar.dateComponents([.year, .month, .day], from: swiftDate, to: today)
+        let dateComponents = gregorianCalendar.dateComponents([.year, .month, .day], from: swiftDate, to: on)
         
         self.dateComponents = dateComponents
         

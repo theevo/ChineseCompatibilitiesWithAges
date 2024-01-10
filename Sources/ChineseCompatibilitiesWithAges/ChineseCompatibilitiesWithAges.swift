@@ -20,11 +20,11 @@ public struct ChineseCompatibilitiesWithAges {
         })
     }
     
-    public init(birthday: String, today: Date = Date()) throws {
+    public init(birthday: String, on: Date = Date()) throws {
         let query = try ZodiacQuery(birthday: birthday)
         let animal = Animal(name: query.animal.name)
         self.animal = animal
-        self.age = try AgeCalculator(birthday: birthday, today: today).age
+        self.age = try AgeCalculator(birthday: birthday, on: on).age
         self.compatibilities = Compatibilities.of(agesAnimal: animal)
         var dict: [Animal: Set<Int>] = [:]
         for compatibility in compatibilities {

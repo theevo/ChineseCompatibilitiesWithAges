@@ -215,7 +215,7 @@ final class ChineseCompatibilitiesWithAgesTests: XCTestCase {
     }
     
     func test_CarlosSantana_nearestRabbitAgesAre_72_and_84_on_01_06_2024() throws {
-        let pig = try ChineseCompatibilitiesWithAges(birthday: "07-20-1947", today: date("01-06-2024"))
+        let pig = try ChineseCompatibilitiesWithAges(birthday: "07-20-1947", on: date("01-06-2024"))
         XCTAssertEqual(pig.animal, .Pig)
         let sut = try XCTUnwrap(pig.nearestNeighborAges[.Rabbit])
         XCTAssertEqual(sut.count, 2)
