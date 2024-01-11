@@ -85,6 +85,20 @@ final class AgeCalculatorTests: XCTestCase {
         XCTAssertEqual(sut.age, 50)
     }
     
+    func test_birthday_01_23_1974_on_01_23_2024inTokyo_isAge49() throws {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(abbreviation: "JST")!
+        formatter.dateFormat = "MM-dd-yyyy"
+        guard let tokyo_01_23_2024_midnight = formatter.date(from: "01-23-2024") else {
+            fatalError()
+        }
+        
+        let sut = try AgeCalculator(birthday: "01-23-1974", on: tokyo_01_23_2024_midnight)
+        print(sut)
+        XCTAssertEqual(sut.age, 49)
+    }
+    
     // MARK: - Helpers
     
     func date(_ string: String) -> Date {
